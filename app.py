@@ -6,8 +6,9 @@ import os
 app = Flask(__name__)
 title = "TODO sample application with Flask and MongoDB"
 heading = "TODO Reminder with Flask and MongoDB"
-
-client = MongoClient("mongodb://127.0.0.1:27017") #host uri
+containerID=os.environ["HOSTNAME"]
+dbhost=os.environ["MONGOURL"]
+client = MongoClient("mongodb://"+dbhost) #host uri
 db = client.mymongodb    #Select the database
 todos = db.todo #Select the collection name
 
@@ -21,7 +22,7 @@ def lists ():
 	#Display the all Tasks
 	todos_l = todos.find()
 	a1="active"
-	return render_template('index.html',a1=a1,todos=todos_l,t=title,h=heading)
+	return render_template('index.html',a1=a1,todos=todos_l,t=title,h=heading,host=containerID)
 
 @app.route("/")
 @app.route("/uncompleted")
@@ -29,7 +30,7 @@ def tasks ():
 	#Display the Uncompleted Tasks
 	todos_l = todos.find({"done":"no"})
 	a2="active"
-	return render_template('index.html',a2=a2,todos=todos_l,t=title,h=heading)
+	return render_template('index.html',a2=a2,todos=todos_l,t=title,h=heading,host=containerID)
 
 
 @app.route("/completed")
@@ -37,7 +38,7 @@ def completed ():
 	#Display the Completed Tasks
 	todos_l = todos.find({"done":"yes"})
 	a3="active"
-	return render_template('index.html',a3=a3,todos=todos_l,t=title,h=heading)
+	return render_template('index.html',a3=a3,todos=todos_l,t=title,h=heading,host=containerID)
 
 @app.route("/done")
 def done ():

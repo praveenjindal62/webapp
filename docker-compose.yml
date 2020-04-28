@@ -1,0 +1,36 @@
+version: "3"
+services:
+
+  pyapp:
+    build: ./
+    image: webapp:0.9
+    depends_on:
+      - dbapp
+    environment:
+      MONGOURL: dbapp:27017
+      FLASK_PORT: 5004
+    deploy:
+      replicas: 10
+    networks: 
+      - backend
+
+  dbapp:
+    image: mongo
+    networks: 
+      - backend
+
+  nginx:
+    image: nginx:0.10
+    ports: 
+      - "8080:80"
+    depends_on:
+      - pyapp
+    environment:
+      APPURL: pyapp
+      APPPORT: 5004
+    networks: 
+      - backend
+
+networks:
+  backend: 
+
