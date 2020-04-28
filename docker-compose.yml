@@ -2,8 +2,9 @@ version: "3"
 services:
 
   pyapp:
-    build: ./
-    image: webapp:0.9
+    build: 
+      context: ./webapp
+      dockerfile: Dockerfile
     depends_on:
       - dbapp
     environment:
@@ -15,12 +16,16 @@ services:
       - backend
 
   dbapp:
-    image: mongo
+    build:
+      context: ./mongo
+      dockerfile: Dockerfile
     networks: 
       - backend
 
   nginx:
-    image: nginx:0.10
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
     ports: 
       - "8080:80"
     depends_on:
