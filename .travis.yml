@@ -1,0 +1,7 @@
+sudo: true
+
+service:
+  docker
+
+before-install:
+  docker-compose build
