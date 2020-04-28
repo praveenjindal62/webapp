@@ -7,5 +7,5 @@ before-install:
   docker-compose up --build -d
 
 scripts:
-  - cd test && sh app-action.sh
-  - cd test && sh remove-task.sh
+  - cd test && sh app-action.sh && cd -
+  - cd test && sh remove-task.sh && cd -
