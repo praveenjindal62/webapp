@@ -5,6 +5,7 @@ services:
     build: 
       context: ./webapp
       dockerfile: Dockerfile
+    image: app_pyapp:latest 
     depends_on:
       - dbapp
     environment:
@@ -19,6 +20,7 @@ services:
     build:
       context: ./mongo
       dockerfile: Dockerfile
+    image: app_dbapp:latest
     networks: 
       - backend
 
@@ -26,6 +28,7 @@ services:
     build:
       context: ./nginx
       dockerfile: Dockerfile
+    image: app_nginx:latest
     ports: 
       - "8080:80"
     depends_on:
