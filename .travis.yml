@@ -4,4 +4,8 @@ service:
   docker
 
 before-install:
-  docker-compose up --build
+  docker-compose up --build -d
+
+scripts:
+  - cd test && sh app-action.sh
+  - cd test && sh remove-task.sh
