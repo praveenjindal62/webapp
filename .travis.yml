@@ -4,4 +4,4 @@ service:
   docker
 
 before-install:
-  docker-compose build
+  docker-compose up --build
