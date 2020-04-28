@@ -4,8 +4,22 @@ service:
   docker
 
 before-install:
-  docker-compose up --build -d
+  - docker pull praveenjindal62/pyapp:1.1
+  - docker pull praveenjindal62/nginx:1.0
+  - docker pull mongo:latest
+  - docker-compose up -d
 
 scripts:
   - cd test && sh app-action.sh && cd -
   - cd test && sh remove-task.sh && cd -
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $ACCESS_KEY_ID
+  secret_access_key: $SECRET_ACCESS_KEY
+  region: "us-east-1"
+  app: "WebApp"
+  env: "WebApp-env"
+  bucket_name: "elasticbeanstalk-us-east-1-415624473279"
+  on:
+    branch: master
