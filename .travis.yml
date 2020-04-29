@@ -12,6 +12,7 @@ scripts:
   - cd test && sh remove-task.sh && cd -
 
 after_script:
+  - docker login --username $DOCKER_USERNAME --password $DOCKER_PASS
   - docker push praveenjindal62/pyapp:latest
   - docker push praveenjindal62/nginx:latest
   - docker search praveenjindal62
