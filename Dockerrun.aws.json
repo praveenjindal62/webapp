@@ -20,7 +20,7 @@
                 }
             ],
             "essential": true,
-            "image": "praveenjindal62/pyapp",
+            "image": "praveenjindal62/pyapp:1.1",
             "name": "pyapp",
             "memory": 512,
             "portMappings": [
