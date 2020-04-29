@@ -4,14 +4,17 @@ service:
   docker
 
 before-install:
-  - docker pull praveenjindal62/pyapp:1.1
-  - docker pull praveenjindal62/nginx:1.0
-  - docker pull mongo:latest
-  - docker-compose up -d
+  - docker-compose up -d --build
+  - docker images
 
 scripts:
   - cd test && sh app-action.sh && cd -
   - cd test && sh remove-task.sh && cd -
+
+after_script:
+  - docker push praveenjindal62/pyapp:latest
+  - docker push praveenjindal62/nginx:latest
+  - docker search praveenjindal62
 
 deploy:
   provider: elasticbeanstalk
@@ -22,4 +25,4 @@ deploy:
   env: "Webapp2-env"
   bucket_name: "elasticbeanstalk-us-east-1-415624473279"
   on:
-    branch: feature
+    branch: master
