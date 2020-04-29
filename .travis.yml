@@ -18,8 +18,8 @@ deploy:
   access_key_id: $ACCESS_KEY_ID
   secret_access_key: $SECRET_ACCESS_KEY
   region: "us-east-1"
-  app: "WebApp"
-  env: "WebApp-env"
+  app: "WebApp2"
+  env: "WebApp2-env"
   bucket_name: "elasticbeanstalk-us-east-1-415624473279"
   on:
-    branch: master
+    branch: feature
