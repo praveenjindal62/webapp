@@ -2,31 +2,9 @@
     "containerDefinitions": [
         {
             "essential": true,
-            "image": "mongo:latest",
+            "image": "mongo",
             "name": "dbapp",
             "hostname": "dbapp"
-        },
-        {
-            "environment": [
-                {
-                    "name": "APPURL",
-                    "value": "pyapp"
-                },
-                {
-                    "name": "APPPORT",
-                    "value": "5004"
-                }
-            ],
-            "essential": true,
-            "image": "praveenjindal62/nginx:1.0",
-            "name": "nginx",
-            "hostname": "nginx",
-            "portMappings": [
-                {
-                    "containerPort": 80,
-                    "hostPort": 8080
-                }
-            ]
         },
         {
             "environment": [
@@ -40,12 +18,15 @@
                 }
             ],
             "essential": true,
-            "image": "praveenjindal62/pyapp:1.1",
+            "image": "praveenjindal62/pyapp",
             "name": "pyapp",
-            "hostname": "pyapp"
+            "portMappings": [
+                {
+                    "containerPort": 5004,
+                    "hostPort": 8080
+                }
+            ]
         }
-    ],
-    "family": "",
-    "volumes": []
+    ]
 }
 
