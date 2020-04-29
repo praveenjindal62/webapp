@@ -6,7 +6,13 @@
             "image": "mongo",
             "name": "dbapp",
             "hostname": "dbapp",
-            "memory": 128
+            "memory": 128,
+            "Volumes": [
+                {
+                  "HostDirectory": "/data/dbapp/db",
+                  "ContainerDirectory": "/data/db"
+                }
+            ]
         },
         {
             "environment": [
