@@ -26,7 +26,7 @@
                 }
             ],
             "essential": true,
-            "image": "praveenjindal62/pyapp:latest",
+            "image": "praveenjindal62/pyapp",
             "name": "pyapp",
             "hostname": "pyapp",
             "memory": 128,
@@ -35,7 +35,7 @@
               ]
         },
         {
-            "image": "praveenjindal62/nginx:latest",
+            "image": "praveenjindal62/nginx",
             "name": "nginx_app",
             "memory": 128,
             "essential": true,
