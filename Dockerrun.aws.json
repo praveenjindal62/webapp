@@ -5,7 +5,8 @@
             "essential": true,
             "image": "mongo",
             "name": "dbapp",
-            "hostname": "dbapp"
+            "hostname": "dbapp",
+            "memory": 128
         },
         {
             "environment": [
@@ -21,6 +22,7 @@
             "essential": true,
             "image": "praveenjindal62/pyapp",
             "name": "pyapp",
+            "memory": 512,
             "portMappings": [
                 {
                     "containerPort": 5004,
