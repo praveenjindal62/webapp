@@ -22,13 +22,16 @@
             "essential": true,
             "image": "praveenjindal62/pyapp:1.1",
             "name": "pyapp",
-            "memory": 512,
+            "memory": 128,
             "portMappings": [
                 {
                     "containerPort": 5004,
                     "hostPort": 8080
                 }
-            ]
+            ],
+            "links": [
+                "dbapp"
+              ]
         }
     ]
 }
