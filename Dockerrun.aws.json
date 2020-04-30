@@ -7,12 +7,12 @@
             "name": "dbapp",
             "hostname": "dbapp",
             "memory": 128,
-            "Volumes": [
+            "mountPoints": [
                 {
-                  "HostDirectory": "/data/dbapp/db",
-                  "ContainerDirectory": "/data/db"
+                  "sourceVolume": "dbapp-volume",
+                  "containerPath": "/data"
                 }
-            ]
+              ]
         },
         {
             "environment": [
@@ -58,6 +58,19 @@
             "links": [
                 "pyapp"
               ]
+        }
+    ],
+    "volumes": [
+        {
+            "name": "dbapp-volume",
+            "dockerVolumeConfiguration" : {
+                "scope": "shared",
+                "autoprovision": true,
+                "driver": "local",
+                "labels": {
+                    "database": "dbapp"
+                }
+            }
         }
     ]
 }
