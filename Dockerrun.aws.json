@@ -10,7 +10,7 @@
             "mountPoints": [
                 {
                   "sourceVolume": "dbapp-volume",
-                  "containerPath": "/data"
+                  "containerPath": "/data/db"
                 }
               ]
         },
